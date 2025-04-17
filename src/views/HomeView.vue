@@ -1,50 +1,39 @@
 <template>
   <div class="home">
     <h1>Home</h1>
-    <h2>{{ ninjaOne.name }}</h2>
-    <h2>{{ ninjaOne.age }} - {{ nameOne }}</h2>
-    <button @click="updateNinjaOne">Update Ninja One</button>
+    <input type="text" v-model="search" />
+    <p>Search term - {{ search }}</p>
 
-    <h1>Reactive</h1>
-    <h2>{{ ninjaTwo.name }} - {{ ninjaTwo.age }} - {{ nameTwo }}</h2>
-    <button @click="updateNinjaTwo">Update Ninja Two</button>
+    <div v-for="name in matchingNames" :key="name">{{ name }}</div>
   </div>
 </template>
 
 <script>
-import { ref, reactive } from "vue";
+import { computed, ref } from "vue";
 
 export default {
   name: "HomeView",
   setup() {
-    const ninjaOne = ref({ name: "deep", age: 30 });
+    const search = ref("");
+    const names = ref([
+      "Alice",
+      "Bob",
+      "Charlie",
+      "David",
+      "Eve",
+      "Frank",
+      "Grace",
+      "Hannah",
+      "Isaac",
+      "Jack",
+      "Abdul",
+    ]);
 
-    const ninjaTwo = reactive({
-      name: "sofian",
-      age: 30,
+    const matchingNames = computed(() => {
+      return names.value.filter((name) => name.includes(search.value));
     });
 
-    const nameOne = ref("dip");
-    const nameTwo = reactive("Hasan");
-
-    const updateNinjaOne = () => {
-      ninjaOne.value.age = 88;
-      nameOne.value = "deep";
-    };
-
-    const updateNinjaTwo = () => {
-      ninjaTwo.age = 45;
-      //nameTwo = reactive("akash");
-    };
-
-    return {
-      ninjaOne,
-      updateNinjaOne,
-      ninjaTwo,
-      updateNinjaTwo,
-      nameOne,
-      nameTwo,
-    };
+    return { names, search, matchingNames };
   },
 };
 </script>
