@@ -1,8 +1,12 @@
 <template>
   <div class="home">
     Home
-    <p ref="p">my name is {{ name }} and age is {{ age }}</p>
+    <p>my name is {{ name }} and age is {{ age }}</p>
     <button @click="handleClick">Click me</button>
+
+    <button @click="age++">Increase age</button>
+
+    <input type="text" v-model="name" />
   </div>
 </template>
 
@@ -12,42 +16,26 @@ import { ref } from "vue";
 export default {
   name: "HomeView",
   setup() {
-    console.log(this);
+    //const p = ref(null);
 
-    const p = ref("Hello, deep");
-    console.log(p, p.value);
-
-    let name = "deep";
-    let age = 18;
+    let name = ref("deep");
+    let age = ref(18);
 
     const handleClick = () => {
-      console.log(p, p.value);
-      p.value.classList.add("test");
-      p.value.textContent = "Hello, ninja!";
+      name.value = "lungi";
+      age.value = 20;
     };
 
     return {
       name,
       age,
       handleClick,
-      p,
     };
-
-    //console.log("setup");
-    // Composition API setup function
-    // You can define reactive properties, computed properties, and methods here
   },
-  /* created() {
-    console.log("created");
-
-    // Lifecycle hook that runs when the component is created
-    // You can perform data fetching or other setup tasks here
+  data() {
+    return {
+      score: 5,
+    };
   },
-  mounted() {
-    console.log("mounted");
-
-    // Lifecycle hook that runs when the component is mounted to the DOM
-    // You can perform DOM manipulations or start timers here
-  }, */
 };
 </script>
