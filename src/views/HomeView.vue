@@ -1,40 +1,49 @@
 <template>
   <div class="home">
-    Home
-    <p>my name is {{ name }} and age is {{ age }}</p>
-    <button @click="handleClick">Click me</button>
+    <h1>Home</h1>
+    <h2>{{ ninjaOne.name }}</h2>
+    <h2>{{ ninjaOne.age }} - {{ nameOne }}</h2>
+    <button @click="updateNinjaOne">Update Ninja One</button>
 
-    <button @click="age++">Increase age</button>
-
-    <input type="text" v-model="name" />
+    <h1>Reactive</h1>
+    <h2>{{ ninjaTwo.name }} - {{ ninjaTwo.age }} - {{ nameTwo }}</h2>
+    <button @click="updateNinjaTwo">Update Ninja Two</button>
   </div>
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, reactive } from "vue";
 
 export default {
   name: "HomeView",
   setup() {
-    //const p = ref(null);
+    const ninjaOne = ref({ name: "deep", age: 30 });
 
-    let name = ref("deep");
-    let age = ref(18);
+    const ninjaTwo = reactive({
+      name: "sofian",
+      age: 30,
+    });
 
-    const handleClick = () => {
-      name.value = "lungi";
-      age.value = 20;
+    const nameOne = ref("dip");
+    const nameTwo = reactive("Hasan");
+
+    const updateNinjaOne = () => {
+      ninjaOne.value.age = 88;
+      nameOne.value = "deep";
+    };
+
+    const updateNinjaTwo = () => {
+      ninjaTwo.age = 45;
+      //nameTwo = reactive("akash");
     };
 
     return {
-      name,
-      age,
-      handleClick,
-    };
-  },
-  data() {
-    return {
-      score: 5,
+      ninjaOne,
+      updateNinjaOne,
+      ninjaTwo,
+      updateNinjaTwo,
+      nameOne,
+      nameTwo,
     };
   },
 };
