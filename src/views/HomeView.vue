@@ -11,7 +11,7 @@
 
 <script>
 import PostList from "@/components/PostList.vue";
-import { ref } from "vue";
+import getPosts from "@/composables/getPosts";
 
 export default {
   name: "HomeView",
@@ -19,33 +19,13 @@ export default {
     PostList,
   },
   setup() {
-    const posts = ref([]);
-    const error = ref(null);
+    const { posts, error, load } = getPosts();
 
-    const load = async () => {
-      try {
-        let data = await fetch("http://localhost:3000/posts");
-        //console.log(data);
-        if (!data.ok) {
-          throw new Error("No Data available");
-        }
-        posts.value = await data.json();
-        /*  const response = await fetch("http://localhost:3000/posts");
-
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        posts.value = await response.json(); */
-      } catch (err) {
-        error.value = err.message;
-        //console.log(error.value);
-      }
-    };
     load();
-    // Simulate a network error
-    // setTimeout(() => {
-    //   error.value = "Network error";
-    // }, 2000);
+    // This is a good place to call load() if you want to fetch posts when the component mounts
+    // However, if you want to fetch posts when the component is created, you can call load() in the created() lifecycle hook
+    // But in this case, we are using the setup() function, so we can call load() directly here
+
     return {
       posts,
       error,
