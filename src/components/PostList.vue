@@ -23,8 +23,6 @@ export default {
     onUpdated(() => {
       console.log("PostList updated");
     });
-
-    //console.log(props.posts);
   },
 };
 </script>

@@ -1,0 +1,47 @@
+{
+    "posts": [
+        {
+            "id": 1,
+            "title": "Welcome to the new blog",
+            "body": "Its me, Mr. Dip Akand here to help you with your Vue.js journey and beyond. I am a full stack developer and I love to share my knowledge with you. I hope you will find this blog helpful. I will be posting about Vue.js, JavaScript, CSS, HTML, and other web development topics. I will also be sharing my personal experiences and tips on how to become a better developer.",
+            "tags": [
+                "vue",
+                "javascript",
+                "css",
+                "html",
+                "web development"
+            ]
+        },
+        {
+            "id": 2,
+            "title": "How to create a Vue.js component",
+            "body": "In this post, I will show you how to create a Vue.js component. A component is a reusable piece of code that can be used in multiple places in your application. Components are the building blocks of a Vue.js application. They allow you to break your application into smaller, more manageable pieces.",
+            "tags": [
+                "vue",
+                "javascript",
+                "css",
+                "html",
+                "web development"
+            ]
+        },   
+        {
+            "id": 3,
+            "title": "Top 5 CSS tips",
+            "body": "1. Use Flexbox, 2. Use Grid, 3. Use Variables, 4. Use Transitions, 5. Use Custom Properties",
+            "tags": [
+                "css",
+                "html",
+                "web development"
+            ]
+        },
+        {
+            "id": 4,
+            "title": "Top 5 JS tips",
+            "body": "1. Use ES6, 2. Use Async/Await, 3. Use Arrow Functions, 4. Use Destructuring, 5. Use Spread Operator",
+            "tags": [
+                "javascript",
+                "web development"
+            ]
+        }
+    ]
+}
